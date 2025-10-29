@@ -101,6 +101,16 @@ export const appRouter = router({
         await db.deleteKnowledgeBase(input.id);
         return { success: true };
       }),
+
+    extractFromDocuments: protectedProcedure
+      .input(z.object({
+        documentsText: z.array(z.string()),
+      }))
+      .mutation(async ({ input }) => {
+        const { extractKnowledgeFromDocuments } = await import("./documentExtractor");
+        const extracted = await extractKnowledgeFromDocuments(input.documentsText);
+        return extracted;
+      }),
   }),
 
   campaign: router({

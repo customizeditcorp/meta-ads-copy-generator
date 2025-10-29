@@ -9,4 +9,5 @@
 - [x] Copy-to-clipboard functionality for each field
 - [x] Campaign history view
 - [ ] Export campaign to JSON/CSV
-- [ ] Documentation and user guide
+- [x] Documentation and user guide
+- [x] Document import feature - upload multiple files and auto-fill knowledge base

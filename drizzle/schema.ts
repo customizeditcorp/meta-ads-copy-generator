@@ -76,3 +76,19 @@ export const generatedCampaigns = mysqlTable("generated_campaigns", {
 
 export type GeneratedCampaign = typeof generatedCampaigns.$inferSelect;
 export type InsertGeneratedCampaign = typeof generatedCampaigns.$inferInsert;
+
+/**
+ * Documents uploaded for knowledge base import
+ */
+export const knowledgeBaseDocuments = mysqlTable("knowledge_base_documents", {
+  id: int("id").autoincrement().primaryKey(),
+  knowledgeBaseId: int("knowledgeBaseId").notNull(),
+  fileName: varchar("fileName", { length: 255 }).notNull(),
+  fileUrl: text("fileUrl").notNull(),
+  fileSize: int("fileSize"),
+  mimeType: varchar("mimeType", { length: 100 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type KnowledgeBaseDocument = typeof knowledgeBaseDocuments.$inferSelect;
+export type InsertKnowledgeBaseDocument = typeof knowledgeBaseDocuments.$inferInsert;

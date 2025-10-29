@@ -10,6 +10,7 @@ import { ArrowLeft, Save } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Link, useLocation, useParams } from "wouter";
+import DocumentImporter from "@/components/DocumentImporter";
 
 export default function KnowledgeBaseForm() {
   const { user } = useAuth();
@@ -93,6 +94,16 @@ export default function KnowledgeBaseForm() {
             <h2 className="text-3xl font-bold mb-2">{isEdit ? "Editar" : "Nueva"} Base de Conocimiento</h2>
             <p className="text-muted-foreground">Completa la información del cliente para entrenar el generador de copy</p>
           </div>
+          
+          {!isEdit && (
+            <DocumentImporter
+              onExtracted={(data) => {
+                setFormData(data);
+                toast.success("Formulario rellenado automáticamente. Revisa y ajusta si es necesario.");
+              }}
+            />
+          )}
+          
           <form onSubmit={handleSubmit} className="space-y-6">
             <Card>
               <CardHeader><CardTitle>Información General</CardTitle><CardDescription>Datos básicos del cliente</CardDescription></CardHeader>

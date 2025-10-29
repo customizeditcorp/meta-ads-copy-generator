@@ -8,7 +8,9 @@ import {
   InsertClientKnowledgeBase,
   generatedCampaigns,
   GeneratedCampaign,
-  InsertGeneratedCampaign
+  InsertGeneratedCampaign,
+  knowledgeBaseDocuments,
+  InsertKnowledgeBaseDocument
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -159,4 +161,22 @@ export async function createGeneratedCampaign(data: InsertGeneratedCampaign): Pr
   if (!inserted || inserted.length === 0) throw new Error("Failed to retrieve inserted campaign");
   
   return inserted[0];
+}
+
+
+// Document extraction helpers
+export async function saveKnowledgeBaseDocument(doc: InsertKnowledgeBaseDocument) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot save document: database not available");
+    return null;
+  }
+  const result = await db.insert(knowledgeBaseDocuments).values(doc);
+  return result;
+}
+
+export async function getDocumentsByKnowledgeBaseId(kbId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return await db.select().from(knowledgeBaseDocuments).where(eq(knowledgeBaseDocuments.knowledgeBaseId, kbId));
 }
