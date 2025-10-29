@@ -13,3 +13,4 @@
 - [x] Document import feature - upload multiple files and auto-fill knowledge base
 - [x] Generate campaign texts in English instead of Spanish
 - [x] Extract and use value proposition (oferta de valor) from documents
+- [x] Fix database field size error - change text fields to mediumtext for large content

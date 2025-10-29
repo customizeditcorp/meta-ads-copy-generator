@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -31,24 +31,24 @@ export const clientKnowledgeBases = mysqlTable("client_knowledge_bases", {
   industry: varchar("industry", { length: 255 }),
   
   // Products/Services
-  products: text("products"), // JSON array of products with descriptions, features, benefits
+  products: mediumtext("products"), // Can be very long with detailed product info
   
   // Target Audience
-  targetDemographics: text("targetDemographics"), // JSON object with age, gender, location, income, occupation
-  targetPsychographics: text("targetPsychographics"), // JSON object with interests, values, lifestyle
-  painPoints: text("painPoints"), // JSON array of customer pain points
-  desires: text("desires"), // JSON array of customer desires
+  targetDemographics: mediumtext("targetDemographics"),
+  targetPsychographics: mediumtext("targetPsychographics"),
+  painPoints: mediumtext("painPoints"), // Can be extensive from GPT documents
+  desires: mediumtext("desires"),
   
   // Brand Voice
-  toneAdjectives: text("toneAdjectives"), // JSON array of tone descriptors
-  toneExamples: text("toneExamples"), // JSON array of example phrases
-  antiToneExamples: text("antiToneExamples"), // JSON array of what to avoid
-  formalityLevel: varchar("formalityLevel", { length: 50 }), // "informal", "conversational", "professional", "corporate"
+  toneAdjectives: text("toneAdjectives"),
+  toneExamples: mediumtext("toneExamples"), // Can have many examples
+  antiToneExamples: mediumtext("antiToneExamples"),
+  formalityLevel: varchar("formalityLevel", { length: 50 }),
   
   // USP
-  usp: text("usp"),
-  differentiators: text("differentiators"),
-  valueProposition: text("valueProposition"), // Main value proposition/offer
+  usp: mediumtext("usp"),
+  differentiators: mediumtext("differentiators"),
+  valueProposition: mediumtext("valueProposition"),
   
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
