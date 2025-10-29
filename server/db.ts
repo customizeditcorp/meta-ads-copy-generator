@@ -1,11 +1,19 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { 
+  InsertUser, 
+  users, 
+  clientKnowledgeBases, 
+  ClientKnowledgeBase,
+  InsertClientKnowledgeBase,
+  generatedCampaigns,
+  GeneratedCampaign,
+  InsertGeneratedCampaign
+} from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
-// Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
@@ -89,4 +97,66 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Client Knowledge Base queries
+export async function getUserKnowledgeBases(userId: number): Promise<ClientKnowledgeBase[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(clientKnowledgeBases).where(eq(clientKnowledgeBases.userId, userId));
+}
+
+export async function getKnowledgeBaseById(id: number): Promise<ClientKnowledgeBase | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(clientKnowledgeBases).where(eq(clientKnowledgeBases.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createKnowledgeBase(data: InsertClientKnowledgeBase): Promise<ClientKnowledgeBase> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(clientKnowledgeBases).values(data);
+  const insertedId = Number(result[0].insertId);
+  
+  const inserted = await getKnowledgeBaseById(insertedId);
+  if (!inserted) throw new Error("Failed to retrieve inserted knowledge base");
+  
+  return inserted;
+}
+
+export async function updateKnowledgeBase(id: number, data: Partial<InsertClientKnowledgeBase>): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.update(clientKnowledgeBases).set(data).where(eq(clientKnowledgeBases.id, id));
+}
+
+export async function deleteKnowledgeBase(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.delete(clientKnowledgeBases).where(eq(clientKnowledgeBases.id, id));
+}
+
+// Generated Campaigns queries
+export async function getUserCampaigns(userId: number): Promise<GeneratedCampaign[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(generatedCampaigns).where(eq(generatedCampaigns.userId, userId));
+}
+
+export async function createGeneratedCampaign(data: InsertGeneratedCampaign): Promise<GeneratedCampaign> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(generatedCampaigns).values(data);
+  const insertedId = Number(result[0].insertId);
+  
+  const inserted = await db.select().from(generatedCampaigns).where(eq(generatedCampaigns.id, insertedId)).limit(1);
+  if (!inserted || inserted.length === 0) throw new Error("Failed to retrieve inserted campaign");
+  
+  return inserted[0];
+}
