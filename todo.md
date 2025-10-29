@@ -11,3 +11,5 @@
 - [ ] Export campaign to JSON/CSV
 - [x] Documentation and user guide
 - [x] Document import feature - upload multiple files and auto-fill knowledge base
+- [x] Generate campaign texts in English instead of Spanish
+- [x] Extract and use value proposition (oferta de valor) from documents

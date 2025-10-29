@@ -1,0 +1,1 @@
+ALTER TABLE `client_knowledge_bases` ADD `valueProposition` text;

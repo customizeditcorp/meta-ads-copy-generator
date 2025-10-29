@@ -53,6 +53,7 @@ export const appRouter = router({
         formalityLevel: z.string().optional(),
         usp: z.string().optional(),
         differentiators: z.string().optional(),
+        valueProposition: z.string().optional(),
       }))
       .mutation(async ({ input, ctx }) => {
         return db.createKnowledgeBase({
@@ -80,6 +81,7 @@ export const appRouter = router({
         formalityLevel: z.string().optional(),
         usp: z.string().optional(),
         differentiators: z.string().optional(),
+        valueProposition: z.string().optional(),
       }))
       .mutation(async ({ input, ctx }) => {
         const { id, ...data } = input;
@@ -134,86 +136,90 @@ export const appRouter = router({
 
         // Build the context for GPT
         const kbContext = `
-# Base de Conocimiento del Cliente
+# Client Knowledge Base
 
-## Información del Negocio
-- Nombre: ${kb.businessName || 'N/A'}
-- Sitio Web: ${kb.website || 'N/A'}
-- Descripción: ${kb.businessDescription || 'N/A'}
-- Industria: ${kb.industry || 'N/A'}
+## Business Information
+- Name: ${kb.businessName || 'N/A'}
+- Website: ${kb.website || 'N/A'}
+- Description: ${kb.businessDescription || 'N/A'}
+- Industry: ${kb.industry || 'N/A'}
 
-## Productos/Servicios
+## Products/Services
 ${kb.products || 'N/A'}
 
-## Público Objetivo
-### Demografía
+## Target Audience
+### Demographics
 ${kb.targetDemographics || 'N/A'}
 
-### Psicografía
+### Psychographics
 ${kb.targetPsychographics || 'N/A'}
 
-### Puntos de Dolor
+### Pain Points
 ${kb.painPoints || 'N/A'}
 
-### Deseos y Aspiraciones
+### Desires and Aspirations
 ${kb.desires || 'N/A'}
 
-## Tono de Voz
-- Adjetivos: ${kb.toneAdjectives || 'N/A'}
-- Ejemplos: ${kb.toneExamples || 'N/A'}
-- Anti-ejemplos: ${kb.antiToneExamples || 'N/A'}
-- Nivel de Formalidad: ${kb.formalityLevel || 'N/A'}
+## Brand Voice
+- Adjectives: ${kb.toneAdjectives || 'N/A'}
+- Examples: ${kb.toneExamples || 'N/A'}
+- Anti-examples: ${kb.antiToneExamples || 'N/A'}
+- Formality Level: ${kb.formalityLevel || 'N/A'}
 
-## Propuesta Única de Valor
-${kb.usp || 'N/A'}
+## Value Proposition
+${kb.valueProposition || kb.usp || 'N/A'}
 
-### Diferenciadores
+### Differentiators
 ${kb.differentiators || 'N/A'}
 `;
 
-        const systemPrompt = `Eres "CopyBot Pro", un experto estratega y redactor publicitario especializado en campañas de Meta (Facebook e Instagram) de alta conversión.
+        const systemPrompt = `You are "CopyBot Pro", an expert strategist and advertising copywriter specialized in high-converting Meta (Facebook and Instagram) campaigns.
 
-Tu objetivo es generar textos publicitarios persuasivos, alineados a la marca y optimizados para los formatos y límites de caracteres de Meta Ads.
+Your goal is to generate persuasive advertising copy, aligned with the brand and optimized for Meta Ads formats and character limits.
 
-LÍMITES DE CARACTERES:
-- Primary Text: Recomendado ~125 caracteres
-- Headline: Recomendado ~40 caracteres
-- Description: Recomendado ~30 caracteres
+**CRITICAL: ALL COPY MUST BE WRITTEN IN ENGLISH**
+
+CHARACTER LIMITS:
+- Primary Text: Recommended ~125 characters
+- Headline: Recommended ~40 characters
+- Description: Recommended ~30 characters
 
 FRAMEWORKS:
-- AIDA (Atención, Interés, Deseo, Acción): Para audiencias nuevas
-- PAS (Problema, Agitación, Solución): Para audiencias que conocen el problema
-- 4Cs (Claro, Conciso, Convincente, Creíble): Para B2B o alto valor
+- AIDA (Attention, Interest, Desire, Action): For new audiences
+- PAS (Problem, Agitation, Solution): For audiences aware of the problem
+- 4Cs (Clear, Concise, Compelling, Credible): For B2B or high-value
 
-Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura:
+You must respond ONLY with a valid JSON object with this structure:
 {
   "campaign_suggestions": [
     {
-      "angle": "Descripción del ángulo de comunicación",
+      "angle": "Description of the communication angle",
       "primary_texts": [
-        { "copy": "Texto principal 1", "char_count": 0 },
-        { "copy": "Texto principal 2", "char_count": 0 }
+        { "copy": "Primary text 1", "char_count": 0 },
+        { "copy": "Primary text 2", "char_count": 0 }
       ],
       "headlines": [
-        { "copy": "Título 1", "char_count": 0 },
-        { "copy": "Título 2", "char_count": 0 }
+        { "copy": "Headline 1", "char_count": 0 },
+        { "copy": "Headline 2", "char_count": 0 }
       ],
       "descriptions": [
-        { "copy": "Descripción 1", "char_count": 0 }
+        { "copy": "Description 1", "char_count": 0 }
       ]
     }
   ]
 }`;
 
-        const userPrompt = `Genera textos publicitarios para Meta Ads con los siguientes parámetros:
+        const userPrompt = `Generate advertising copy for Meta Ads with the following parameters:
 
-OBJETIVO DE CAMPAÑA: ${input.campaignObjective}
-PRODUCTO/SERVICIO ENFOCADO: ${input.productFocus || 'General'}
-OFERTA ESPECÍFICA: ${input.offerDetails || 'Ninguna'}
+CAMPAIGN OBJECTIVE: ${input.campaignObjective}
+FOCUSED PRODUCT/SERVICE: ${input.productFocus || 'General'}
+SPECIFIC OFFER: ${input.offerDetails || 'None'}
 
 ${kbContext}
 
-Genera al menos 2 ángulos de comunicación diferentes, con múltiples variaciones de textos para cada uno. Calcula y rellena el campo char_count para cada pieza de copy.`;
+Generate at least 2 different communication angles, with multiple text variations for each one. Calculate and fill the char_count field for each piece of copy.
+
+**REMEMBER: Write ALL copy in ENGLISH, using the brand voice and value proposition provided above.**`;
 
         try {
           const response = await invokeLLM({

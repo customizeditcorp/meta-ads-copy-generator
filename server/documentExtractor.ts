@@ -20,6 +20,7 @@ export async function extractKnowledgeFromDocuments(documentsText: string[]): Pr
   formalityLevel: string;
   usp: string;
   differentiators: string;
+  valueProposition: string;
 }> {
   // Combine all documents
   const combinedText = documentsText.join("\n\n---DOCUMENT SEPARATOR---\n\n");
@@ -67,7 +68,8 @@ Return a JSON object with this exact structure:
   "antiToneExamples": "Examples of what NOT to sound like",
   "formalityLevel": "Level of formality (e.g., 'Conversational', 'Professional', 'Casual')",
   "usp": "Unique Selling Proposition - what makes this business different",
-  "differentiators": "Key differentiators and competitive advantages"
+  "differentiators": "Key differentiators and competitive advantages",
+  "valueProposition": "Main value proposition or promise - the core offer and transformation delivered"
 }`;
 
   const response = await invokeLLM({
@@ -98,13 +100,14 @@ Return a JSON object with this exact structure:
             antiToneExamples: { type: "string" },
             formalityLevel: { type: "string" },
             usp: { type: "string" },
-            differentiators: { type: "string" }
+            differentiators: { type: "string" },
+            valueProposition: { type: "string" }
           },
           required: [
             "name", "businessName", "website", "businessDescription", "industry",
             "products", "targetDemographics", "targetPsychographics", "painPoints",
             "desires", "toneAdjectives", "toneExamples", "antiToneExamples",
-            "formalityLevel", "usp", "differentiators"
+            "formalityLevel", "usp", "differentiators", "valueProposition"
           ],
           additionalProperties: false
         }

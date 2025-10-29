@@ -23,6 +23,7 @@ interface DocumentImporterProps {
     formalityLevel: string;
     usp: string;
     differentiators: string;
+    valueProposition: string;
   }) => void;
 }
 

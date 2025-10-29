@@ -28,6 +28,7 @@ export default function KnowledgeBaseForm() {
     name: "", businessName: "", website: "", businessDescription: "", industry: "",
     products: "", targetDemographics: "", targetPsychographics: "", painPoints: "", desires: "",
     toneAdjectives: "", toneExamples: "", antiToneExamples: "", formalityLevel: "", usp: "", differentiators: "",
+    valueProposition: "",
   });
 
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function KnowledgeBaseForm() {
         toneAdjectives: existingKb.toneAdjectives || "", toneExamples: existingKb.toneExamples || "",
         antiToneExamples: existingKb.antiToneExamples || "", formalityLevel: existingKb.formalityLevel || "",
         usp: existingKb.usp || "", differentiators: existingKb.differentiators || "",
+        valueProposition: existingKb.valueProposition || "",
       });
     }
   }, [existingKb]);
@@ -98,7 +100,7 @@ export default function KnowledgeBaseForm() {
           {!isEdit && (
             <DocumentImporter
               onExtracted={(data) => {
-                setFormData(data);
+                setFormData({ ...data });
                 toast.success("Formulario rellenado automáticamente. Revisa y ajusta si es necesario.");
               }}
             />
@@ -140,6 +142,7 @@ export default function KnowledgeBaseForm() {
             <Card>
               <CardHeader><CardTitle>Propuesta Única de Valor</CardTitle><CardDescription>¿Qué hace diferente a este negocio?</CardDescription></CardHeader>
               <CardContent className="space-y-4">
+                <div><Label htmlFor="valueProposition">Propuesta de Valor Principal</Label><Textarea id="valueProposition" value={formData.valueProposition} onChange={(e) => handleChange("valueProposition", e.target.value)} placeholder="La promesa central y transformación que ofreces al cliente..." rows={3} /></div>
                 <div><Label htmlFor="usp">USP (Unique Selling Proposition)</Label><Textarea id="usp" value={formData.usp} onChange={(e) => handleChange("usp", e.target.value)} placeholder="¿Qué hace que tu oferta sea diferente y mejor que la competencia?" rows={3} /></div>
                 <div><Label htmlFor="differentiators">Diferenciadores Clave</Label><Textarea id="differentiators" value={formData.differentiators} onChange={(e) => handleChange("differentiators", e.target.value)} placeholder="Lista los principales diferenciadores..." rows={3} /></div>
               </CardContent>

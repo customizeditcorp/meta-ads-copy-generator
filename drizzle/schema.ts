@@ -47,7 +47,8 @@ export const clientKnowledgeBases = mysqlTable("client_knowledge_bases", {
   
   // USP
   usp: text("usp"),
-  differentiators: text("differentiators"), // JSON array
+  differentiators: text("differentiators"),
+  valueProposition: text("valueProposition"), // Main value proposition/offer
   
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
