@@ -14,3 +14,5 @@
 - [x] Generate campaign texts in English instead of Spanish
 - [x] Extract and use value proposition (oferta de valor) from documents
 - [x] Fix database field size error - change text fields to mediumtext for large content
+- [x] Increase campaign variations to 4 primary texts, 4 headlines, 4 descriptions
+- [x] Integrate Margarita Pasos sales methodology into GPT instructions
