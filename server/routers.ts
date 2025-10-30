@@ -179,10 +179,12 @@ Your goal is to generate persuasive advertising copy, aligned with the brand and
 
 **CRITICAL: ALL COPY MUST BE WRITTEN IN ENGLISH**
 
-CHARACTER LIMITS:
-- Primary Text: Recommended ~125 characters
-- Headline: Recommended ~40 characters
-- Description: Recommended ~30 characters
+CHARACTER LIMITS (STRICT - DO NOT EXCEED):
+- Primary Text: MAXIMUM 125 characters (including spaces and punctuation)
+- Headline: MAXIMUM 40 characters (including spaces and punctuation)
+- Description: MAXIMUM 30 characters (including spaces and punctuation)
+
+**CRITICAL: Every piece of copy MUST be within these limits. If a text exceeds the limit, rewrite it shorter while maintaining impact.**
 
 MARGARITA PASOS SALES METHODOLOGY (7 ARCs):
 Apply these techniques based on campaign objective:
@@ -263,7 +265,15 @@ Apply Margarita Pasos methodology based on the campaign objective:
 
 Calculate and fill the char_count field for each piece of copy.
 
-**REMEMBER: Write ALL copy in ENGLISH, using the brand voice, value proposition, and pain points provided above.**`;
+**CRITICAL REQUIREMENTS:**
+1. ALL copy MUST be in ENGLISH
+2. Primary Texts MUST NOT exceed 125 characters
+3. Headlines MUST NOT exceed 40 characters
+4. Descriptions MUST NOT exceed 30 characters
+5. Apply Margarita Pasos ARCs in EVERY text variation
+6. Use the brand voice, value proposition, and pain points provided above
+
+**If any text exceeds the character limit, rewrite it shorter immediately.**`;
 
         try {
           const response = await invokeLLM({

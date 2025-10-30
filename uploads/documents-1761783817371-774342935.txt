@@ -1,0 +1,248 @@
+﻿¡entendido! Aquí tienes un solo CANVAS maestro (sin código) con paso a paso de clics en GHL + todos los textos listos para pegar. Es exactamente lo que pediste “antes del código”, consolidado en un documento práctico para construir el funnel punto por punto.
+________________
+
+
+🧩 CANVAS MAESTRO — JV Roof & Deck Rain-Ready Program™ (GHL)
+Builder: GoHighLevel (GHL).
+Estructura: Section → Row → Columns → Elements.
+Anchor principal: #book (lleva al Form).
+Tel.: (805) 674-1383
+ Credenciales: CSLB #1125194 • $25K contractor bond • $2M general liability • GAF Certified • 20+ years
+ Áreas: SLO coastal (Avila, Pismo, Arroyo Grande, Cambria, Cayucos, Morro Bay) + Santa Barbara/Montecito
+________________
+
+
+1) Funnel & Step
+Clics: Sites → Funnels → + New Funnel → “JV — Rain-Ready Program” → + Add New Step → Name: Landing • Path: /rain-ready • Edit Page.
+________________
+
+
+2) Sticky Header (logo, CTA, teléfono)
+Clics: Add Section → Add Row (1 col) → Add Elements: Image, Button, Text.
+* Botón (CTA): Link a #book (esto scrollea al formulario).
+
+* Teléfono: (805) 674-1383 con enlace tel:+18056741383.
+
+Textos (para pegar):
+   * CTA: Book Your Free Roof & Deck Inspection
+
+________________
+
+
+3) Hero (H1, Subhead, badges, microcopy, CTA)
+Clics: Add Section → Add Row → Headline, Sub Headline, Paragraph, Button.
+Textos (pegar tal cual):
+      * H1: JV Roof & Deck Rain-Ready Program™
+
+      * Subhead:
+ A free Roof & Deck assessment with a clear plan, priority scheduling, and professional execution—so your home stays dry when the rain arrives.
+
+      * Badges (una línea):
+ CSLB #1125194 • GAF Certified • Bonded • $2M Liability
+
+      * Microcopy confianza:
+ Fully licensed by the CSLB, bonded, and liability-insured.
+
+      * CTA (botón, link a #book):
+ Book Your Free Roof & Deck Inspection
+
+________________
+
+
+4) Problema → Empatía
+Clics: Add Section → Add Row → Text.
+Texto:
+ Leaks and storm damage get expensive—fast. Roofs and decks over living areas (kitchens, family rooms) are especially vulnerable.
+ We help you stay dry before the first storm with a clear plan and weather-aligned scheduling.
+________________
+
+
+5) Promesa / Valor (3 bullets)
+Clics: Add Section → Add Row → Headline + Bullet List.
+Headline:
+ Stay dry before the first storm.
+Bullets:
+ • Clear, evidence-based plan (photos/video).
+ • Priority scheduling and 48-hour storm mitigation when needed.
+ • Quality-first execution aligned with weather windows (no rush jobs).
+________________
+
+
+6) What You Get (lista)
+Clics: Add Section → Add Row → Bullet List.
+Texto:
+ • Free Roof & Deck Assessment (roof: shingles/tiles, flashing, penetrations, valleys, gutters; deck: membrane, seams, drains, edges).
+ • Photo/Video Report + Action Plan (risks, prioritized recommendations, next steps).
+ • Minor Preventive Fixes when feasible during the visit.
+ • 48-Hour Storm Priority (tarping; transparent mitigation fee).
+ • Spec-Driven Estimate & Weather-Aligned Scheduling (repairs/replacement; deck waterproofing available).
+________________
+
+
+7) Method (4 pasos)
+Clics: Add Section → Add Row → Headline + (Bullet List o 4 columnas).
+Headline:
+ Our 4-Step Rain-Ready Method
+Pasos:
+ 1) 360° Diagnostic — Structured roof & deck checklist with photos/video.
+ 2) Preventive Actions — On-the-spot sealing/fasteners when feasible.
+ 3) Storm Readiness & Emergency Mitigation Plan — Written contingency (tarping approach, materials, access) + 48-hour priority during storm weeks.
+ 4) Spec & Weather-Aligned Scheduling — Best-fit system and a schedule aligned to weather windows for quality-first execution.
+________________
+
+
+8) Proof & Credentials
+Clics: Add Section → Add Row → Paragraph + Bullet List.
+Intro (línea aprobada):
+ Fully licensed by the CSLB, bonded, and liability-insured.
+Bullets:
+ • CSLB License #1125194
+ • $25K contractor bond
+ • $2M general liability insurance
+ • GAF Certified installer
+ • 20+ years of owner-led experience
+(Workers’ Comp: no se menciona hasta confirmación.)
+________________
+
+
+9) Reviews (Elfsight — Opción A)
+Clics: Add Section → Add Row → Add Element: “Custom JS/HTML”.
+Acción: Pega tu snippet de Elfsight (el que da tu cuenta) en ese elemento.
+(En el editor puede no renderizar; verifica en Preview/Live.)
+________________
+
+
+10) Service Area
+Clics: Add Section → Add Row → Paragraph.
+Texto:
+ Serving San Luis Obispo County’s coastal communities—Avila Beach, Pismo Beach, Arroyo Grande, Cambria, Cayucos, Morro Bay—and Santa Barbara/Montecito.
+________________
+
+
+11) CTA Intermedio
+Clics: Add Section → Add Row → Headline + Button + Small Text.
+Textos:
+         * Headline: Ready to stay dry?
+
+         * Button (link a #book): Book Your Free Roof & Deck Inspection
+
+         * Nota: Limited weekly slots per crew to guarantee storm-week response.
+
+________________
+
+
+12) FAQ (5 Q&A)
+Clics: Add Section → Add Row → Toggle/Accordion (o Text).
+Texto:
+ Q: Is the inspection really free?
+ A: Yes. If emergency tarping is required, there’s a transparent mitigation fee.
+Q: How does 48-hour storm priority work?
+ A: If storms are forecast, we place inspection clients on a prioritized mitigation list.
+Q: Why weather-aligned scheduling?
+ A: Quality comes first; we time work for safe, durable results.
+Q: Do you work on decks over living spaces?
+ A: Yes. We assess membranes, seams, drains, and offer waterproofing options.
+Q: Licenses and insurance?
+ A: CSLB #1125194, bonded, $2M liability; GAF Certified.
+________________
+
+
+13) Form + ANCLA #book
+Clics (crear ancla): Selecciona la Section del Form → Settings → Advanced → CSS ID = book (sin #).
+Clics (añadir formulario): Add Element → Form → selecciona “Rain-Ready – Intake” (cuando esté creado; ver abajo).
+Aviso legal bajo el form:
+ By submitting, you agree to be contacted about your request. Emergency tarping, if needed, carries a mitigation fee.
+________________
+
+
+14) Footer
+Clics: Add Section → Add Row → Text/Links.
+Textos:
+ (805) 674-1383 (link: tel:+18056741383)
+ CSLB #1125194
+ Fully licensed by the CSLB, bonded, and liability-insured.
+ Field operations only — no walk-ins.
+ © JV Roofing Inc. • Instagram @jvroofinginc2024
+________________
+
+
+15) Thank You Page (Step 2)
+Clics: + Add New Step → Thank You • Path: /rain-ready/thank-you • Edit Page.
+Textos:
+            * H1: You’re on the Rain-Ready list.
+
+            * Párrafo: We’ll reach out within one business day to confirm your inspection window. If a storm is forecast, you’ll receive 48-hour priority for emergency mitigation (tarping fee may apply).
+
+            * Next Steps (bullets):
+ • Keep your phone on — we’ll text to confirm the time window.
+ • If you have active leaks, call us now: (805) 674-1383
+ • Save this: CSLB #1125194 • GAF Certified • Bonded • $2M Liability
+
+            * Botón: Read our Google reviews → (enlace a tu página de reseñas).
+
+________________
+
+
+16) Form “Rain-Ready – Intake” (campos)
+Clics: Sites → Forms → Builder → + Create New Form.
+Campos (etiquetas exactas):
+               * Name* • Phone* • Email • Property Address
+
+               * City (Dropdown: Avila Beach, Pismo Beach, Arroyo Grande, Cambria, Cayucos, Morro Bay, Santa Barbara, Montecito)
+
+               * Roof Type (Select: Asphalt, Tile, Metal, Flat, Other)
+
+               * Deck Present (Yes/No)
+
+               * Preferred Window (AM/PM)
+
+               * Notes (optional)
+
+               * Checkbox (requerido): I understand emergency tarping, if needed, carries a mitigation fee.
+
+               * Hidden fields: utm_source • utm_medium • utm_campaign • gclid
+On Submit: Add to Workflow → “Rain-Ready: New Lead”.
+
+________________
+
+
+17) Pipeline & Workflows (resumen)
+Pipeline: Opportunities → Pipelines → + New → Rain-Ready
+ Stages: New Lead → Contacted → Inspection Scheduled → Inspection Done → Estimate Sent → Approved → Scheduled (Work) → Completed → Nurture
+Workflow “Rain-Ready: New Lead” (Trigger: Form Submitted):
+                  * Add Tag Rain-Ready Lead → Create Opportunity (Pipeline: Rain-Ready, Stage: New Lead) → Assign to User → Internal Notification → SMS al lead → Email al lead → (opcional enviar link de calendario) → Update Stage: Contacted.
+
+SMS (texto para pegar):
+ Hi {{contact.first_name}}, this is JV Roofing. Thanks for requesting your free Roof & Deck inspection. We’ll confirm your time window shortly. If a storm is forecast, you’ll receive 48-hour storm priority for mitigation. – (805) 674-1383
+Email (Subject): Your Roof & Deck inspection request
+ Body:
+ Hi {{contact.first_name}},
+ Thanks for requesting your free Roof & Deck inspection with JV Roofing.
+ We’ll reach out shortly to confirm your time window. If a storm is forecast, you’ll receive 48-hour storm priority for mitigation (tarping fee may apply).
+ — JV Roofing
+ CSLB #1125194 • GAF Certified • Bonded • $2M Liability
+ (805) 674-1383
+(Workflow “Storm Week”: Trigger Tag Storm Week → SMS de alerta + Task al técnico.)
+________________
+
+
+18) Tracking & QA (sin código)
+                     * Pixels/Scripts globales: Funnel → Settings → Head Tracking Code.
+
+                     * Conversión: Step Thank You → Settings → Tracking Code (evento de conversión).
+
+                     * QA:
+
+                        * CTA del Hero scrollea a #book.
+
+                        * Elfsight se ve en Preview/Live.
+
+                        * Form → Workflow → Pipeline funcionan.
+
+                        * Thank You dispara conversión.
+
+                        * Mobile-first OK.
+
+                        * Badges/Proof visibles.
+
+                        * Tarping fee mencionado en Form y FAQ.
