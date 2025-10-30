@@ -17,3 +17,4 @@
 - [x] Increase campaign variations to 4 primary texts, 4 headlines, 4 descriptions
 - [x] Integrate Margarita Pasos sales methodology into GPT instructions
 - [x] Enforce strict 125 character limit for primary texts in campaign generation
+- [x] Add Lead Form generation (headline, description, custom questions with options, thank you message, CTA button)

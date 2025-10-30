@@ -240,7 +240,19 @@ You must respond ONLY with a valid JSON object with this structure:
         { "copy": "Description 2", "char_count": 0 },
         { "copy": "Description 3", "char_count": 0 },
         { "copy": "Description 4", "char_count": 0 }
-      ]
+      ],
+      "lead_form": {
+        "form_headline": "Headline for the lead form (max 60 chars)",
+        "form_description": "Description explaining what users will get (max 125 chars)",
+        "custom_questions": [
+          {
+            "question": "Question text",
+            "options": ["Option 1", "Option 2", "Option 3", "Option 4"]
+          }
+        ],
+        "thank_you_message": "Message after form submission",
+        "cta_button_text": "Button text (e.g., Learn More, Get Started)"
+      }
     }
   ]
 }`;
@@ -257,6 +269,12 @@ Generate at least 2 different communication angles. For EACH angle, create:
 - 4 Primary Text variations
 - 4 Headline variations
 - 4 Description variations
+- 1 Lead Form (for Lead Generation campaigns) with:
+  * Form Headline (max 60 chars)
+  * Form Description (max 125 chars)
+  * 2-3 Custom Questions with 3-5 multiple choice options each
+  * Thank You Message
+  * CTA Button Text
 
 Apply Margarita Pasos methodology based on the campaign objective:
 - If AWARENESS/TRAFFIC: Use ARC 1-2 techniques (emotional connection, trust building)
@@ -270,8 +288,11 @@ Calculate and fill the char_count field for each piece of copy.
 2. Primary Texts MUST NOT exceed 125 characters
 3. Headlines MUST NOT exceed 40 characters
 4. Descriptions MUST NOT exceed 30 characters
-5. Apply Margarita Pasos ARCs in EVERY text variation
-6. Use the brand voice, value proposition, and pain points provided above
+5. Form Headline MUST NOT exceed 60 characters
+6. Form Description MUST NOT exceed 125 characters
+7. Apply Margarita Pasos ARCs in EVERY text variation
+8. Use the brand voice, value proposition, and pain points provided above
+9. Lead Form questions should qualify leads using Margarita Pasos techniques (identify needs, urgency, budget awareness)
 
 **If any text exceeds the character limit, rewrite it shorter immediately.**`;
 
@@ -330,9 +351,35 @@ Calculate and fill the char_count field for each piece of copy.
                               required: ["copy", "char_count"],
                               additionalProperties: false
                             }
+                          },
+                          lead_form: {
+                            type: "object",
+                            properties: {
+                              form_headline: { type: "string" },
+                              form_description: { type: "string" },
+                              custom_questions: {
+                                type: "array",
+                                items: {
+                                  type: "object",
+                                  properties: {
+                                    question: { type: "string" },
+                                    options: {
+                                      type: "array",
+                                      items: { type: "string" }
+                                    }
+                                  },
+                                  required: ["question", "options"],
+                                  additionalProperties: false
+                                }
+                              },
+                              thank_you_message: { type: "string" },
+                              cta_button_text: { type: "string" }
+                            },
+                            required: ["form_headline", "form_description", "custom_questions", "thank_you_message", "cta_button_text"],
+                            additionalProperties: false
                           }
                         },
-                        required: ["angle", "primary_texts", "headlines", "descriptions"],
+                        required: ["angle", "primary_texts", "headlines", "descriptions", "lead_form"],
                         additionalProperties: false
                       }
                     }

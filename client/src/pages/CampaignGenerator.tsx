@@ -13,7 +13,9 @@ import { toast } from "sonner";
 import { Link } from "wouter";
 
 type CopyItem = { copy: string; char_count: number };
-type CampaignAngle = { angle: string; primary_texts: CopyItem[]; headlines: CopyItem[]; descriptions: CopyItem[]; };
+type LeadFormQuestion = { question: string; options: string[]; };
+type LeadForm = { form_headline: string; form_description: string; custom_questions: LeadFormQuestion[]; thank_you_message: string; cta_button_text: string; };
+type CampaignAngle = { angle: string; primary_texts: CopyItem[]; headlines: CopyItem[]; descriptions: CopyItem[]; lead_form: LeadForm; };
 
 export default function CampaignGenerator() {
   const { user } = useAuth();
@@ -148,6 +150,73 @@ export default function CampaignGenerator() {
                                   <p className="text-xs text-muted-foreground mt-2">{item.char_count} caracteres{item.char_count > 30 && (<span className="text-orange-600 ml-2">⚠ Excede recomendación (30)</span>)}</p>
                                 </div>
                               ))}
+                            </div>
+                          </div>
+                        )}
+                        {angle.lead_form && (
+                          <div className="border-t pt-6">
+                            <h4 className="font-semibold mb-4 text-sm uppercase text-muted-foreground flex items-center gap-2">
+                              <span className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">Lead Form</span>
+                              Formulario de Generación de Leads
+                            </h4>
+                            <div className="space-y-4">
+                              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                                <div className="flex items-start justify-between gap-2 mb-2">
+                                  <div className="flex-1">
+                                    <p className="text-xs font-medium text-muted-foreground mb-1">Form Headline (max 60 chars)</p>
+                                    <p className="text-sm font-semibold">{angle.lead_form.form_headline}</p>
+                                    <p className="text-xs text-muted-foreground mt-1">{angle.lead_form.form_headline.length} caracteres</p>
+                                  </div>
+                                  <Button size="sm" variant="ghost" onClick={() => copyToClipboard(angle.lead_form.form_headline)}><Copy className="h-4 w-4" /></Button>
+                                </div>
+                              </div>
+                              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                                <div className="flex items-start justify-between gap-2 mb-2">
+                                  <div className="flex-1">
+                                    <p className="text-xs font-medium text-muted-foreground mb-1">Form Description (max 125 chars)</p>
+                                    <p className="text-sm">{angle.lead_form.form_description}</p>
+                                    <p className="text-xs text-muted-foreground mt-1">{angle.lead_form.form_description.length} caracteres</p>
+                                  </div>
+                                  <Button size="sm" variant="ghost" onClick={() => copyToClipboard(angle.lead_form.form_description)}><Copy className="h-4 w-4" /></Button>
+                                </div>
+                              </div>
+                              <div>
+                                <p className="text-xs font-medium text-muted-foreground mb-2">Custom Questions</p>
+                                {angle.lead_form.custom_questions.map((q, qIdx) => (
+                                  <div key={qIdx} className="bg-white border rounded-lg p-3 mb-2">
+                                    <div className="flex items-start justify-between gap-2 mb-2">
+                                      <p className="flex-1 text-sm font-medium">{q.question}</p>
+                                      <Button size="sm" variant="ghost" onClick={() => copyToClipboard(q.question)}><Copy className="h-4 w-4" /></Button>
+                                    </div>
+                                    <div className="ml-4 space-y-1">
+                                      {q.options.map((opt, optIdx) => (
+                                        <div key={optIdx} className="flex items-center gap-2">
+                                          <span className="text-xs text-muted-foreground">□</span>
+                                          <span className="text-xs">{opt}</span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                                <div className="flex items-start justify-between gap-2 mb-2">
+                                  <div className="flex-1">
+                                    <p className="text-xs font-medium text-muted-foreground mb-1">Thank You Message</p>
+                                    <p className="text-sm">{angle.lead_form.thank_you_message}</p>
+                                  </div>
+                                  <Button size="sm" variant="ghost" onClick={() => copyToClipboard(angle.lead_form.thank_you_message)}><Copy className="h-4 w-4" /></Button>
+                                </div>
+                              </div>
+                              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                                <div className="flex items-start justify-between gap-2 mb-2">
+                                  <div className="flex-1">
+                                    <p className="text-xs font-medium text-muted-foreground mb-1">CTA Button Text</p>
+                                    <p className="text-sm font-semibold">{angle.lead_form.cta_button_text}</p>
+                                  </div>
+                                  <Button size="sm" variant="ghost" onClick={() => copyToClipboard(angle.lead_form.cta_button_text)}><Copy className="h-4 w-4" /></Button>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         )}
