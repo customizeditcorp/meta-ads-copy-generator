@@ -1,4 +1,4 @@
-import { invokeLLM } from "./_core/llm";
+import { invokeClaudeAI } from "./_core/claude";
 
 /**
  * Extract text content from uploaded documents and structure it into knowledge base format
@@ -72,7 +72,7 @@ Return a JSON object with this exact structure:
   "valueProposition": "Main value proposition or promise - the core offer and transformation delivered"
 }`;
 
-  const response = await invokeLLM({
+  const response = await invokeClaudeAI({
     messages: [
       { role: "system", content: systemPrompt },
       { role: "user", content: userPrompt }

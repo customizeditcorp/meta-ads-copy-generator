@@ -4,7 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import * as db from "./db";
-import { invokeLLM } from "./_core/llm";
+import { invokeClaudeAI } from "./_core/claude";
 import { TRPCError } from "@trpc/server";
 
 export const appRouter = router({
@@ -297,7 +297,7 @@ Calculate and fill the char_count field for each piece of copy.
 **If any text exceeds the character limit, rewrite it shorter immediately.**`;
 
         try {
-          const response = await invokeLLM({
+          const response = await invokeClaudeAI({
             messages: [
               { role: "system", content: systemPrompt },
               { role: "user", content: userPrompt }

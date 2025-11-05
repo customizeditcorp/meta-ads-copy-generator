@@ -18,3 +18,5 @@
 - [x] Integrate Margarita Pasos sales methodology into GPT instructions
 - [x] Enforce strict 125 character limit for primary texts in campaign generation
 - [x] Add Lead Form generation (headline, description, custom questions with options, thank you message, CTA button)
+- [x] Replace OpenAI GPT with Claude AI for campaign generation
+- [ ] Add campaign focus/restrictions field for better control
