@@ -23,3 +23,5 @@
 - [x] Add tooltips (i) to campaign generation form fields
 - [x] Improve placeholders with better examples
 - [x] Add helper text below fields
+- [x] Fix ANTHROPIC_API_KEY configuration error
+- [x] Fix Claude model name to use correct version
