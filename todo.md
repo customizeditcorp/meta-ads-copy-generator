@@ -25,3 +25,4 @@
 - [x] Add helper text below fields
 - [x] Fix ANTHROPIC_API_KEY configuration error
 - [x] Fix Claude model name to use correct version
+- [x] Fix JSON parsing to handle markdown code blocks from Claude

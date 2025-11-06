@@ -395,7 +395,14 @@ Calculate and fill the char_count field for each piece of copy.
           if (!messageContent || typeof messageContent !== 'string') {
             throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "No content generated" });
           }
-          const generatedContent = messageContent;
+          
+          // Strip markdown code blocks if present (Claude sometimes wraps JSON in ```json)
+          let generatedContent = messageContent.trim();
+          if (generatedContent.startsWith('```json')) {
+            generatedContent = generatedContent.replace(/^```json\s*/, '').replace(/\s*```$/, '');
+          } else if (generatedContent.startsWith('```')) {
+            generatedContent = generatedContent.replace(/^```\s*/, '').replace(/\s*```$/, '');
+          }
 
           // Save to database
           const campaign = await db.createGeneratedCampaign({

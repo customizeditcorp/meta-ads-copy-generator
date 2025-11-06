@@ -120,5 +120,13 @@ Return a JSON object with this exact structure:
     throw new Error("No content returned from LLM");
   }
 
-  return JSON.parse(content);
+  // Strip markdown code blocks if present (Claude sometimes wraps JSON in ```json)
+  let cleanedContent = content.trim();
+  if (cleanedContent.startsWith('```json')) {
+    cleanedContent = cleanedContent.replace(/^```json\s*/, '').replace(/\s*```$/, '');
+  } else if (cleanedContent.startsWith('```')) {
+    cleanedContent = cleanedContent.replace(/^```\s*/, '').replace(/\s*```$/, '');
+  }
+
+  return JSON.parse(cleanedContent);
 }
