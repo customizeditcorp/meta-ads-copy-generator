@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { APP_LOGO, APP_TITLE } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { ArrowLeft, Copy, Sparkles } from "lucide-react";
+import { InfoTooltip } from "@/components/ui/info-tooltip";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Link } from "wouter";
@@ -70,7 +71,10 @@ export default function CampaignGenerator() {
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="objective">Objetivo de Campaña *</Label>
+                    <Label htmlFor="objective">
+                      Objetivo de Campaña *
+                      <InfoTooltip content="Define la estrategia del copy. Awareness: generar conocimiento. Traffic/Engagement: atraer interés. Leads: capturar contactos. Sales: cerrar ventas. Cada objetivo usa diferentes técnicas de persuasión." />
+                    </Label>
                     <Select value={campaignObjective} onValueChange={setCampaignObjective}>
                       <SelectTrigger id="objective"><SelectValue placeholder="Selecciona un objetivo" /></SelectTrigger>
                       <SelectContent>
@@ -82,8 +86,33 @@ export default function CampaignGenerator() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div><Label htmlFor="product">Producto/Servicio Enfocado</Label><Input id="product" value={productFocus} onChange={(e) => setProductFocus(e.target.value)} placeholder="Ej: Curso de Marketing Digital" /></div>
-                  <div><Label htmlFor="offer">Oferta Específica</Label><Textarea id="offer" value={offerDetails} onChange={(e) => setOfferDetails(e.target.value)} placeholder="Ej: 20% de descuento en el primer mes" rows={3} /></div>
+                  <div>
+                    <Label htmlFor="product">
+                      Producto/Servicio Enfocado
+                      <InfoTooltip content="Define QUÉ servicio promocionas. Esto determina qué beneficios destacar e influye en el vocabulario del copy. Ejemplo: New Roof Installation, Emergency Leak Repair, Roof & Deck Waterproofing" />
+                    </Label>
+                    <Input 
+                      id="product" 
+                      value={productFocus} 
+                      onChange={(e) => setProductFocus(e.target.value)} 
+                      placeholder="Ej: New Roof Installation, Emergency Leak Repair, Preventive Inspection" 
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">Opcional: Deja vacío para copy general</p>
+                  </div>
+                  <div>
+                    <Label htmlFor="offer">
+                      Oferta Específica
+                      <InfoTooltip content="Tu gancho único o promoción especial. Esto se convierte en el mensaje central y el CTA principal. Ejemplo: Free inspection + Rain-Ready Program, 20% off complete replacements, Emergency response within 24 hours" />
+                    </Label>
+                    <Textarea 
+                      id="offer" 
+                      value={offerDetails} 
+                      onChange={(e) => setOfferDetails(e.target.value)} 
+                      placeholder="Ej: Rain-Ready Program™ - Free inspection with clear plan and priority scheduling" 
+                      rows={3} 
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">Opcional: Describe tu promoción, programa especial o garantía única</p>
+                  </div>
                   <Button onClick={handleGenerate} disabled={generateMutation.isPending} className="w-full">
                     {generateMutation.isPending ? (<><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>Generando...</>) : (<><Sparkles className="h-4 w-4 mr-2" />Generar Campaña</>)}
                   </Button>

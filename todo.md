@@ -20,3 +20,6 @@
 - [x] Add Lead Form generation (headline, description, custom questions with options, thank you message, CTA button)
 - [x] Replace OpenAI GPT with Claude AI for campaign generation
 - [ ] Add campaign focus/restrictions field for better control
+- [x] Add tooltips (i) to campaign generation form fields
+- [x] Improve placeholders with better examples
+- [x] Add helper text below fields
